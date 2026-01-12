@@ -1,9 +1,8 @@
 import "./App.css";
 import TravelForm from "./components/TravelForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import TravelForm from './components/TravelForm';
-import TravelList from './components/TravelList';
+import TravelList from "./components/TravelList";
 import { DUMMY } from "./dummy";
 
 function App() {
@@ -29,37 +28,48 @@ function App() {
   };
 
   const handleUpdate = (updatedTravel) => {
-    setTravels(travels.map(t =>
-      t.id === updatedTravel.id ? updatedTravel : t
-    ));
+    setTravels(
+      travels.map((t) => (t.id === updatedTravel.id ? updatedTravel : t))
+    );
     setEditingTravel(null);
   };
 
   const handleDelte = (id) => {
-    if (window.confirm('정말 삭제하시겠습니까?')) {
-      setTravels(travels.filter(t => t.id !== id));
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      setTravels(travels.filter((t) => t.id !== id));
     }
   };
 
   // 수정 시작
   const handleEdit = (travel) => {
     setEditingTravel(travel);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // 수정 취소
   const handleCancelEdit = () => {
     setEditingTravel(null);
-  }
-
+  };
 
   // 통계 계산
-  const totalCountries = new Set(travels.map(t => t.country)).size;
+  const totalTrips = travels.length;
+  const totalCountries = new Set(travels.map((t) => t.country)).size;
 
   return (
     <div className="App">
       <Header totalTrips={totalTrips} totalCountries={totalCountries} />
-      <TravelForm />
+      <TravelForm
+        onAdd={handleAdd}
+        editingTravel={editingTravel}
+        onUpdate={handleUpdate}
+        onCancelEdit={handleCancelEdit}
+      />
+
+      <TravelList
+        travels={travels}
+        onEdit={handleEdit}
+        onDelete={handleDelte}
+      />
     </div>
   );
 }

@@ -15,7 +15,8 @@ function TravelForm({ onAdd, editingTravel, onUpdate, onCancelEdit }) {
   // 수정 모드일 때 폼에 데이터 채우기
   useEffect(() => {
     if (editingTravel) {
-      setForm(editingTravel);
+      console.log("1!!", editingTravel);
+      setForm(...editingTravel);
     }
   }, [editingTravel]);
 
@@ -91,7 +92,7 @@ function TravelForm({ onAdd, editingTravel, onUpdate, onCancelEdit }) {
           <label>국가 *</label>
           <input
             type="text"
-            name="name"
+            name="country"
             value={form.country}
             onChange={handleChange}
             placeholder="예: 프랑스"
