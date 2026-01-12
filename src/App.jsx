@@ -1,5 +1,6 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import TravelForm from "./components/TravelForm";
+import { useState } from "react";
 import Header from "./components/Header";
 import TravelForm from './components/TravelForm';
 import TravelList from './components/TravelList';
@@ -57,16 +58,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header
-        totalTrips={travels.length}
-        totalCountries={totalCountries}
-      />
-      <TravelForm
-        onAdd={handleAdd}
-        editingTravel={editingTravel}
-        onUpdate={handleUpdate}
-        onCancelEdit={handleCancelEdit}
-      />
+      <Header totalTrips={totalTrips} totalCountries={totalCountries} />
+      <TravelForm />
     </div>
   );
 }
