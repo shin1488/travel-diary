@@ -1,4 +1,5 @@
 import "./App.css";
+import TravelForm from "./components/TravelForm";
 import { useState } from "react";
 import Header from "./components/Header";
 import { DUMMY } from "./dummy";
@@ -9,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <Header totalTrips={totalTrips} totalCountries={totalCountries} />
+      <TravelForm />
     </div>
   );
 }
