@@ -33,10 +33,10 @@ function TravelCard({ travel, onEdit, onDelete }) {
       </div>
 
       <div className="card-actions">
-        <button className="btn-edit" onClick={() => onEdit(travel)}>
+        <button className="btn-edit" onClick={() => onEdit(travel.id)}>
           수정
         </button>
-        <button className="btn-delete" onClick={() => onDelete(travel)}>
+        <button className="btn-delete" onClick={() => onDelete(travel.id)}>
           삭제
         </button>
       </div>

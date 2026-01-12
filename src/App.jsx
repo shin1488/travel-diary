@@ -35,9 +35,11 @@ function App() {
   };
 
   const handleDelte = (id) => {
-    if (window.confirm("정말 삭제하시겠습니까?")) {
-      setTravels(travels.filter((t) => t.id !== id));
-    }
+    setTravels(travels.filter((t) => t.id !== id));
+    // if (window.confirm("정말 삭제하시겠습니까?")) {
+    //   console.log("!!");
+    //   setTravels(travels.filter((t) => t.id !== id));
+    // }
   };
 
   // 수정 시작
